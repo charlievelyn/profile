@@ -3,31 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Pages Website</title>
+    <title>Google Tag Manager Test Page</title>
 
-	<!-- Google Tag Manager -->
-	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-	})(window,document,'script','dataLayer','GTM-PMJ98H89');</script>
-	<!-- End Google Tag Manager -->
-
-</head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PMJ98H89');</script>
+    </head>
 <body>
-	<!-- Google Tag Manager (noscript) -->
-	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PMJ98H89"
-	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-	<!-- End Google Tag Manager (noscript) -->
-
-    <h1>Welcome to My GitHub Pages Site</h1>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PMJ98H89"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+    <h1>Google Tag Manager Test Page</h1>
     <p>This page is tracked using Google Tag Manager.</p>
 
-    <button id="trackButton">Click Me</button>
+    <button id="trackButton">Click Me (Button Click Event)</button><br><br>
+
+    <a href="https://www.example.com" id="trackLink">Example Link (Link Click Event)</a><br><br>
+
+    <input type="text" id="trackInput" placeholder="Type something here (Form Interaction)"> <br><br>
+
+    <select id="trackSelect">
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+    </select> <br><br>
+
+    <button id="trackFormSubmit">Simulate Form Submit</button>
+
+    <form id="myForm" style="display:none">
+        <input type="hidden" name="hiddenField" value="hiddenValue">
+    </form>
 
     <script>
+        // Button Click Event
         document.getElementById("trackButton").addEventListener("click", function() {
             dataLayer.push({'event': 'button_click', 'button_text': 'Click Me'});
+        });
+
+        // Link Click Event
+        document.getElementById("trackLink").addEventListener("click", function() {
+            dataLayer.push({'event': 'link_click', 'link_url': this.href, 'link_text': this.textContent});
+        });
+
+        // Form Interaction (Input Change)
+        document.getElementById("trackInput").addEventListener("input", function() {
+            dataLayer.push({'event': 'input_change', 'input_value': this.value});
+        });
+
+        // Select Change Event
+        document.getElementById("trackSelect").addEventListener("change", function() {
+            dataLayer.push({'event': 'select_change', 'select_value': this.value});
+        });
+
+         // Form Submit Simulation
+        document.getElementById("trackFormSubmit").addEventListener("click", function(){
+            dataLayer.push({'event': 'form_submit', 'form_id': 'myForm'});
+            document.getElementById('myForm').submit();
         });
     </script>
 </body>
